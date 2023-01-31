@@ -1,0 +1,3 @@
+displayName = Furgo的Boss计时器
+author = Furgo_
+version = 0.1
