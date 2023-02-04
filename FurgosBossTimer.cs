@@ -2,7 +2,7 @@
 
 namespace FurgosBossTimer
 {
-	public class FurgosBossTimer : Mod
-	{
-	}
+    public class FurgosBossTimer : Mod
+    {
+    }
 }

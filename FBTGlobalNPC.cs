@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -53,14 +53,14 @@ namespace FurgosBossTimer
                 return;
             float PhaseTransitionHealth = NPCIDPhases[npc.type][OnPhase];
 
-            /*if (int.TryParse(PhaseTransitionHealth.ToString(), out int PhaseTransitionHp))
+            if (int.TryParse(PhaseTransitionHealth.ToString(), out int PhaseTransitionHp))
             {
                 if (npc.life <= PhaseTransitionHp)
                 {
                     Main.NewText(OnPhase+"!");
                     RecordedPhase[npc.type]++;
                 }
-            }*/
+            }
             float PhasePercent = PhaseTransitionHealth;
             if (PhasePercent > 1)
                 return;
@@ -82,4 +82,4 @@ namespace FurgosBossTimer
             //Main.NewText(RecordedPhase[npc.type]);
         }
     }
-}
+}*/
