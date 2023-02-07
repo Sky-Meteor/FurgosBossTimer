@@ -17,7 +17,7 @@ namespace FurgosBossTimer.UI
         public UITextSearchBar(string textToShowWhenEmpty) : base(textToShowWhenEmpty)
         {
             Height = new StyleDimension(40f, 0);
-            Width = new StyleDimension(1450f, 0);
+            Width = new StyleDimension(1150f, 0);
             _textToShowWhenEmpty = textToShowWhenEmpty;
             ShowInputTicker = false;
             SetTextMaxLength(100);

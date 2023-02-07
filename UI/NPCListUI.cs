@@ -22,9 +22,11 @@ namespace FurgosBossTimer.UI
         {
             DragableUIPanel = new DragableUIPanel()
             {
-                Height = new StyleDimension(1000f, 0),
-                Width = new StyleDimension(1500f, 0)
+                Height = new StyleDimension(700f, 0),
+                Width = new StyleDimension(1200f, 0),
             };
+            DragableUIPanel.Top = new StyleDimension(100f, 0);
+            DragableUIPanel.Left = new StyleDimension(250f, 0);
 
             Scrollbar = new UIScrollbar()
             {
@@ -85,7 +87,7 @@ namespace FurgosBossTimer.UI
 
                     UIText uiText = new UIText(i + " " + Lang.GetNPCNameValue(i));
                     uiText.Top.Set(uIImageButton.Top.Pixels + uIImageButton.Height.Pixels / 2, 0);
-                    uiText.Left.Set(uIImageButton.Left.Pixels + 1200f, 0);
+                    uiText.Left.Set(uIImageButton.Left.Pixels + 900f, 0);
 
                     uIImageButton.Append(uiText);
                     NPCList.Add(uIImageButton);
