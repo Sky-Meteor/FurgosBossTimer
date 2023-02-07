@@ -12,10 +12,10 @@ namespace FurgosBossTimer.UI
 {
     public class NPCListUI : UIState
     {
-        DragableUIPanel DragableUIPanel;
-        UIList NPCList;
-        UIScrollbar Scrollbar;
-        UITextSearchBar SearchBar;
+        private DragableUIPanel DragableUIPanel;
+        private UIList NPCList;
+        private UIScrollbar Scrollbar;
+        private UITextSearchBar SearchBar;
         public static bool IsMouseHoveringScrollbar = false;
         string oldText;
 

@@ -8,9 +8,9 @@ namespace FurgosBossTimer.UI
 {
     public class UIManager : ModSystem
     {
-        internal NPCListUI NPCListUI;
-        internal UserInterface UserInterface;
-        internal GameTime gameTime;
+        private NPCListUI NPCListUI;
+        private UserInterface UserInterface;
+        private GameTime gameTime;
         public static bool UIVisible = false;
         public override void Load()
         {
