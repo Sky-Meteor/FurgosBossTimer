@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace FurgosBossTimer
 {
+    // rework s∞n
     public class PhaseTimerCommand : ModCommand
     {
         public override CommandType Type => CommandType.Chat;
