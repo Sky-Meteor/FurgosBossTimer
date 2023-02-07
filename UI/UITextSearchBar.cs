@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameInput;
@@ -9,28 +10,20 @@ namespace FurgosBossTimer.UI
 {
     public class UITextSearchBar : UITextBox
     {
+        public Action<string> OnTextChange;
         private readonly string _textToShowWhenEmpty;
-        private UITextBox _textBox;
+        private string _oldText;
         private bool _focused;
-        public UITextSearchBar(string textToShowWhenEmpty, float textScale = 1, bool large = false) : base(textToShowWhenEmpty, textScale, large)
+        public UITextSearchBar(string textToShowWhenEmpty) : base(textToShowWhenEmpty)
         {
             Height = new StyleDimension(40f, 0);
-            Width = new StyleDimension(950f, 0);
+            Width = new StyleDimension(1450f, 0);
             _textToShowWhenEmpty = textToShowWhenEmpty;
-            _textBox = new UITextBox(textToShowWhenEmpty)
-            {
-                Height = new StyleDimension(40f, 0),
-                Width = new StyleDimension(950f, 0),
-                ShowInputTicker = true,
-            };
-            _textBox.SetTextMaxLength(100);
+            ShowInputTicker = false;
+            SetTextMaxLength(100);
             _focused = false;
+            _oldText = "";
         }
-        public override void Click(UIMouseEvent evt)
-        {
-            _focused = !_focused;
-        }
-
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             base.DrawSelf(spriteBatch);
@@ -40,14 +33,44 @@ namespace FurgosBossTimer.UI
                 Main.instance.HandleIME();
             }
         }
+
+        public override void Click(UIMouseEvent evt)
+        {
+            _focused = !_focused;
+            if (_focused)
+                Main.clrInput();
+        }
+
         public override void Update(GameTime gameTime)
         {
-            if (_focused)
+            base.Update(gameTime);
+            if (PlayerInput.Triggers.Current.MouseLeft && !ContainsPoint(Main.MouseScreen))
             {
-                Main.LocalPlayer.mouseInterface = true;
+                _focused = false;
             }
 
-            base.Update(gameTime);
+            if (_focused)
+            {
+                if (Text == _textToShowWhenEmpty)
+                    SetText("");
+                Main.LocalPlayer.mouseInterface = true;
+                string newText = Main.GetInputText(_oldText);
+                SetText(newText);
+                if (newText != _oldText)
+                {
+                    _oldText = newText;
+                    OnTextChange?.Invoke(newText);
+                }
+                _color = Color.White;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Text))
+                    SetText(_textToShowWhenEmpty);
+                _color = Color.Gray;
+            }
+
+            ShowInputTicker = _focused;
         }
     }
 }
